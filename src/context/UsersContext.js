@@ -10,11 +10,11 @@ export const usersReducer = (state = [], action) => {
       }
     case 'CREATE_USER':
       return { 
-        users: [action.payload, ...state.users] 
+        users: [...state.users, action.payload] 
       }
     case 'DELETE_USER':
       return { 
-        users: [action.payload, ...state.users]
+        users: state.users.filter(user => user.id !== action.payload)
       }
     default:
       return state

@@ -36,10 +36,12 @@ const Users = () => {
         'Content-Type': 'application/json'
       }
 
+      // To Server
       const { data } = await axios.post('http://localhost:3000/api/users', user, config)
 
+      // To State
       if(data) {
-        dispatch({type: 'CREATE_USER', payload: data})
+        dispatch({ type: 'CREATE_USER', payload: data })
         console.log(users)
       }
       
@@ -51,7 +53,6 @@ const Users = () => {
   const deleteUser = async (e, deleteId) => {
     e.preventDefault()
 
-    console.log('delete request fired')
     const config = {
       'Content-Type': 'application/json'
     }
@@ -60,7 +61,7 @@ const Users = () => {
       const { data } = await axios.delete(`http://localhost:3000/api/users/${deleteId}`, config)
 
       if(data) {
-        dispatch({type: 'DELETE_USER', payload: data})
+        dispatch({ type: 'DELETE_USER', payload: data })
       }
     } catch (error) {
       
